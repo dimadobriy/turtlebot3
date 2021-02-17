@@ -11,7 +11,7 @@ import tf.transformations as tftr
 from numpy import matrix, cos, arctan2, sqrt, pi, sin, cos
 import numpy as np
 
-
+'''
 class PID:
 
     def __init__(self, kp, ki, kd, u_max=None, u_min=None):
@@ -40,7 +40,7 @@ class PID:
                 u = self.u_min
 
         return u
-
+'''
 class Task2:
 
     def __init__(self):
@@ -69,9 +69,9 @@ class Task2:
         self.rot_z_des = 0.0
 
         "Controllers"
-        self.pose_controller = PID([1.1, 0.0, 0.0], 
-                                   [1.0, 0.0, 0.0],
-                                   [1.1, 0.0, 0.0])
+        #self.pose_controller = PID([0.1, 0.0, 0.0], 
+         #                          [0.0, 0.0, 0.0],
+          #                         [0.1, 0.0, 0.0])
         #self.orientation_controller = PID(5.0, 2.0, 0.0)
 
         "ROS stuff"
@@ -112,9 +112,9 @@ class Task2:
         # set control
         velocity = Twist()
         velocity.linear.x = 0.6 * dist_to_goal * cos(error_angle)
-        velocity.angular.z = 1.0 * error_angle
+        velocity.angular.z = 0.1 * error_angle
         self.pub_cmd_vel.publish(velocity)
-
+        print(e_x)
         self.lock.release()
 
         """
